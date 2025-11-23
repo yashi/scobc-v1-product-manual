@@ -5,3 +5,5 @@ include::if-spec-con1.adoc[]
 include::if-spec-jtag.adoc[]
 
 include::if-spec-boot-mode.adoc[]
+
+include::if-spec-versal-mio.adoc[]
