@@ -1,69 +1,167 @@
-== Product Overview
+== 製品概要
+
 === Specifications
 
-[cols="1,3",options="header",]
+.Main Processor
+[cols="1,1"]
 |===
-| Feature                  | Description
-2.+| Main Processor
-| Device                   | AMD Versal AI Edge Series VE2302
-| Application Processor    |Up to 1.30 GHz Dual core Arm Cortex-A72 +
-                             48 KB/32 KB L1 Cache w/ parity & ECC +
-                             1 MB L2 Cache w/ ECC
-| Real-time Processor      | Up to 600 MHz Dual core Arm Cortex-R5F +
-                             32 KB/32 KB L1 Cache +
-			     256 KB TCM w/ECC
-| AI Engine                | AI Engine-ML Tile: 34 +
-                             AIE/AIE-ML Data Memory [M]): 17 +
-                             AIE-ML Shared Memory [Mb]: 68
-| Programmable Logic       | System Logic: 328,720 +
-                             LUTs: 150,272 +
-                             DSP Engines: 464 +
-			     NoC Master / NoC Slave Ports: 5 +
-                             Distributed RAM: 4.6 [Mb]
-| Memory                   | Total Block RAM: 5.4 [Mb]
-                             UltraRAM: 43,6 [Mb]+
-			     Accelerator RAM: 32 [Mb]
-2.+| Safety Processor
-| Device                   | Microchip IGLOO2 (M2GL090)
-2.+On Board Memory
-| DDR4                     | DDR4 memory w/ ECC 4 [GB]
-| Boot Memory              | NOR Flash memory 64 MByte x 2
-| Main Storage (for Linux) | 64GByte
-| High Reliability Memory  | FRAM 1 MByte x 2
-2.+| Pre-Install Operating System
-| Main Processor APU       | Linux
-| Main Processor RPU       | Zephyr RTOS
-2.+| Board to Board Interface (User IO)
-| Versal PMC MIO 0         | 14 signals +
-                             Platform Management MIO[25:12] +
-                             VDDIO: 1.8 [V]
-| Versal PMC MIO 1         | 13 signals +
-                             Platform Management MIO[49:37] +
-                             VDDIO: 1.8 [V]
-| Versal LPD MIO           | 26 signals +
-                             Low Power Domain MIO[25:0] +
-                             VDDIO: 1.8/2.5/3.3 [V]
-| Versal PL XPIO           | 54 signals (Versal Bank 703) +
-                             VDDIO: 1.0/1.2/1.35/1.5 [V]
-| Versal PL HDIO           | 22 signals +
-                             VDDIO: 1.8/2.5/3.3 [V]
-| Versal GTYP0             | 20 signals +
-                             Clock: 2 pair,  TX: 4 pair, RX: 4 pair
-| Versal GTYP1             | 20 signals +
-                             Clock: 2 pair,  TX: 4 pair, RX: 4 pair
-| IGLOO2 MSIO 0            | 32 signals (IGLOO2 Bank 5) +
-                             VDDIO: 1.2/1.5/1.8/2.5/3.3 [V]
-| IGLOO2 MSIO 1            | 16 signals (IGLOO2 Bank 8) +
-                             VDDIO: 1.2/1.5/1.8/2.5/3.3 [V]
-2.+| Board Health Function
-| On-Board Sensor          | Temperature Sensor +
-                             Current/Voltage Monitor
-| Power Management         | Over-current detection +
-                             Brownout protection
-2.+| Environmental Characteristics
-| Power Supply             | DC 5.0 [V]
-| Operating Temperature    | -40 〜 80 
-| Size                     | 100 mm × 150 mm
+|Feature|Description
+
+|Device
+|AMD Versal AI Edge Series VE2302
+
+|Application Processor
+|Up to 1.30 GHz Dual core Arm Cortex-A72 +
+48 KB/32 KB L1 Cache w/ parity & ECC +
+1 MB L2 Cache w/ ECC
+
+|Real-time Processor
+|Up to 600 MHz Dual core Arm Cortex-R5F +
+32 KB/32 KB L1 Cache +
+256 KB TCM w/ECC
+
+|AI Engine
+|AI Engine-ML Tiles: 34 +
+AIE/AIE-ML Data Memory: 17 Mb +
+AIE-ML Shared Memory: 68 Mb
+
+|Programmable Logic
+|System Logic: 328,720 +
+LUTs: 150,272 +
+DSP Engines: 464 +
+NoC Master / NoC Slave Ports: 5 +
+Distributed RAM: 4.6 Mb
+
+|Memory
+|Total Block RAM: 5.4 Mb +
+UltraRAM: 43,6 Mb +
+Accelerator RAM: 32 Mb +
+DDR Memory Controllers: 1 (Bus Width: 64)
+
+|===
+
+
+.Safety Processor
+[cols="1,1"]
+|===
+|Feature|Description
+
+|Device
+|Microchip IGLOO2 (M2GL090)
+
+|===
+
+.On Board Memory
+[cols="1,1"]
+|===
+|Feature|Description
+
+|DDR Memory
+|DDR4 memory 4 GB w/ ECC
+
+|Boot Memory
+|NOR Flash memory 64 MB x 2
+
+|Storage
+|eMMC 64 GB
+
+|High Reliability Memory
+|FRAM 1 MB x 2
+
+|===
+
+.Operating System
+[cols="1,1"]
+|===
+|Feature|Description
+
+|APU
+|Linux
+
+|RPU
+|Zephyr RTOS
+
+|===
+
+.Board to Board Interface (User IO)
+[cols="1,1"]
+|===
+|Feature|Description
+
+|Versal PMC MIO 0
+|14 signals +
+Platform Management MIO[25:12] +
+VDDIO: 1.8 V
+
+|Versal PMC MIO 1
+|13 signals +
+Platform Management MIO[49:37] +
+VDDIO: 1.8 V
+
+|Versal LPD MIO
+|26 signals +
+Low Power Domain MIO[25:0] +
+VDDIO: 1.8/2.5/3.3 V
+
+|Versal PL XPIO
+|54 signals (Versal Bank 703) +
+VDDIO: 1.0/1.2/1.35/1.5 V
+
+|Versal PL HDIO
+|22 signals +
+VDDIO: 1.8/2.5/3.3 V
+
+|Versal GTYP0
+|20 signals +
+Clock: 2 pair +
+TX: 4 pair +
+RX: 4 pair
+
+|Versal GTYP1
+|20 signals +
+Clock: 2 pair +
+TX: 4 pair +
+RX: 4 pair
+
+|IGLOO2 MSIO 0
+|32 signals (IGLOO2 Bank 5) +
+VDDIO: 1.2/1.5/1.8/2.5/3.3 V
+
+|IGLOO2 MSIO 1
+|16 signals (IGLOO2 Bank 8) +
+VDDIO: 1.2/1.5/1.8/2.5/3.3 V
+
+|===
+
+.Board Health Function
+[cols="1,1"]
+|===
+|Feature|Description
+
+|On-Board Sensor
+|Temperature Sensor +
+Current/Voltage Monitor
+
+|Power Management
+|Over-current Detection +
+Brownout Protection
+
+|===
+
+.Environmental Characteristics
+[cols="1,1"]
+|===
+|Feature|Description
+
+|Power Supply
+|DC 5.0 V
+
+|Operating Temperature
+|-40 to 80 °C
+
+|Dimentions
+|100 mm x 150 mm
+
 |===
 
 === Block Diagram
