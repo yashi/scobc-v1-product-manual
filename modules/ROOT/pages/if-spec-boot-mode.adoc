@@ -1,0 +1,49 @@
+=== Versal Boot Mode 信号
+
+SC-OBC Module V1 に搭載されている Versal デバイスは、電源投入後に Boot Mode ピンの状態を読み取ることでブート方法を決定します。
+
+通常動作では、SC-OBC Module V1 はオンボードの NOR フラッシュおよび eMMC にソフトウェアを格納し、そこからブートするように設計されています。ただし、初期開発を容易にするため、キャリアボード上の SD カードにソフトウェアを格納することもできます。これにより、ソフトウェアを頻繁に更新する開発シナリオで SD カードを便利に利用できます。
+
+4 ビット分の Boot Mode 信号はすべてボード間コネクタに配線されていますが、それらのビットの組み合わせすべてがサポートされているわけではありません。
+
+[cols="1,1,1"]
+|===
+|MODE [3:0] pin |Boot Interface |Usable on SC-OBC module V1
+
+|0000
+|JTAG
+|Yes
+
+|1010
+|SelectMAP
+|No
+
+|1000
+|OSPI
+|No
+
+|0001
+|QSPI24
+|No
+
+|0010
+|QSPI32
+|Yes
+
+|0110
+|eMMC1 v4.51
+|Yes (not recommended)
+
+|0011
+|SD0 v3.0
+|Yes
+
+|0101
+|SD1 v2.0
+|No
+
+|1110
+|SD1 v3.0
+|No
+
+|===
