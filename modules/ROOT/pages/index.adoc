@@ -5,6 +5,6 @@
 
 include::introduction.adoc[]
 
-include::product_overview.adoc[]
+include::overview.adoc[]
 
 include::interface-specifications.adoc[]
