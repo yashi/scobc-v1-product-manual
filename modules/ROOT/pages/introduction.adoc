@@ -9,4 +9,4 @@ SC-OBC Module V1には、メインプロセッサとは別にシステム管理�
 
 ハードウェアは耐放射線デバイスと高い放射線耐性が確認された産業用部品で構成されているため宇宙環境でも高い信頼性を確保します。
 
-image::SC-OBC-Module-V1.png[product image]
+image::SC-OBC-Module-V1.webp[product image]
