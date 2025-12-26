@@ -1,10 +1,10 @@
 === Versal PMC MIO 0/1, LPD MIO
 
-SC-OBC Module V1 上では、Versal デバイスの PMC（Platform Management Controller）および LPD（Low Power Domain）にある PMC MIO 0/1 と LPD MIO を、ユーザが利用できる LVCMOS I/O バッファとして提供しています。これらの I/O は、PMC および LPD 内部に実装された複数のペリフェラルで多重化されており、ソフトウェア設定によって機能を選択できます。
+On the SC-OBC Module V1, the PMC MIO 0/1 and LPD MIO located within the Versal device's PMC (Platform Management Controller) and LPD (Low Power Domain) are provided as LVCMOS I/O buffers available to the user. These I/O pins are multiplexed with multiple peripherals implemented within the PMC and LPD, and their functions can be selected via software configuration.
 
-SC-OBC Module V1 の実装上の制約により、PMC MIO 0/1 の I/O 電圧は 1.8 V に固定されています。一方、LPD MIO では、ボード間コネクタ経由でバンク電源（VCCO_502）を供給することで、柔軟に I/O 電圧を選択できます。
+Due to implementation constraints on the SC-OBC Module V1, the I/O voltage for PMC MIO 0/1 is fixed at 1.8 V. In contrast, the LPD MIO allows flexible selection of I/O voltage by supplying the bank power (VCCO_502) via the board-to-board connector.
 
-ユーザが利用可能な各 MIO と、それぞれに割り当て可能な機能を、以下の表に示します。
+The table below lists each MIO available to the user and the functions assignable to each.
 
 .Types of User-Accessible MIOs
 [cols="1,1,1,1"]

@@ -1,6 +1,6 @@
 === Versal GTY/GTYP 0/1
 
 
-Versal の GTY/GTYP は、Versal デバイスに統合された高速 PIPE トランシーバです。これらの GTY/GTYP トランシーバは、PCIe コントローラまたは High-Speed Debug Port (HSDP) に接続できます。
+Versal GTY/GTYP are high-speed PIPE transceivers integrated into Versal devices. These GTY/GTYP transceivers can be connected to a PCIe controller or a High-Speed Debug Port (HSDP).
 
-SC-OBC Module V1 は、ユーザ向けに 2 つの GTY/GTYP インタフェースを提供しており、それぞれに 2 組のクロック信号ペア、4 組の送信 (TX)信号ペア、4 組の受信 (RX) 信号ペアを備えています。
+The SC-OBC Module V1 provides users with two GTY/GTYP interfaces, each featuring two pairs of clock signals, four pairs of transmit (TX) signals, and four pairs of receive (RX) signals.

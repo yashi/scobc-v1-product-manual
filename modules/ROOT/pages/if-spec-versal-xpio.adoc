@@ -1,5 +1,5 @@
 === Versal PL XPIO
 
-Versal PL XPIO 信号は、Versal デバイスのプログラマブルロジック側にある XPIO に接続されており、ユーザが利用できるように提供されています。XPIO は、高性能インタフェースと低速の SDR/DDR インタフェースの両方をサポートします。XPHY を使用することで、XPIO はデータストリームのアラインメント、シリアライズ、およびデシリアライズを実現します。対応する I/O 規格は、1.0 V、1.2 V、1.35 V、1.5 V のバンク電圧に対応しています。
+Versal PL XPIO signals connect to the XPIO on the programmable logic side of the Versal device and are made accessible to the user. XPIO supports both high-performance interfaces and low-speed SDR/DDR interfaces. Using XPHY, XPIO enables data stream alignment, serialization, and deserialization. Supported I/O standards include bank voltages of 1.0 V, 1.2 V, 1.35 V, and 1.5 V.
 
-SC-OBC Module V1 は、ユーザ向けに 54 本の XPIO 信号を提供します。Versal PL XPIO を使用するには、キャリアボードから VCCO_703 を介してバンク電源を供給する必要があり、ユーザは Versal がサポートするいずれかのバンク電圧を選択できます。
+The SC-OBC Module V1 provides 54 XPIO signals to the user. To use the Versal PL XPIO, the bank power must be supplied from the carrier board via VCCO_703, and the user can select any of the bank voltages supported by the Versal device.

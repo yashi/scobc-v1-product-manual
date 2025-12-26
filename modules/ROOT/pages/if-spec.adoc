@@ -1,4 +1,4 @@
-== インターフェース仕様
+== Interface Specifications
 
 include::if-spec-con1.adoc[]
 

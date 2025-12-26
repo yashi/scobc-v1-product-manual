@@ -1,5 +1,5 @@
 === Versal PL HDIO
 
-Versal PL HDIO 信号は、Versal デバイスのプログラマブルロジック側の HDIO に接続されており、ユーザが利用できるように提供されています。HDIO（High-Density I/O）は、低速の SDR および DDR インタフェースをサポートするリソースを含みます。これらの I/O は、1.8 V、2.5 V、3.3 V のバンク電圧に対応した規格をサポートします。
+Versal PL HDIO signals are connected to the HDIO on the programmable logic side of the Versal device and are made accessible to the user. HDIO (High-Density I/O) includes resources supporting low-speed SDR and DDR interfaces. These I/Os support standards compatible with 1.8 V, 2.5 V, and 3.3 V bank voltages.
 
-SC-OBC Module V1 に搭載されている Versal デバイスには 22 本の HDIO 信号があり、そのすべてがユーザに開放されています。Versal PL HDIO を使用するためには、キャリアボードから VCCO_302 を介してバンク電源を供給する必要があり、Versal がサポートするいずれかのバンク電圧をユーザが選択できます。
+The Versal device on the SC-OBC Module V1 has 22 HDIO signals, all of which are available to the user. To use the Versal PL HDIO, the user must supply bank power from the carrier board via VCCO_302, selecting one of the bank voltages supported by the Versal.

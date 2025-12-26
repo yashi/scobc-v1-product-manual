@@ -1,6 +1,6 @@
-== 製品概要
+== Product Overview
 
-=== 仕様
+=== Specifications
 
 .Main Processor
 [cols="1,1"]
@@ -166,14 +166,12 @@ Brownout Protection
 
 === Block Diagram
 
-SC-OBC Module V1は、FPGAを採用することによる高い柔軟性を維持するために、OBC ModuleとCarrier Boardの2枚の基板でOBCを構成します。
+The SC-OBC Module V1 configures the OBC using two boards (the OBC Module and the Carrier Board) to maintain high flexibility through the use of FPGAs.
 
-OBC Moduleには、DDR4メモリ、Boot Storage、Main Storage、SC-OBC Module V1を採用するシステムのインターフェース構成が変わっても影響しない再利用性の高い機能が実装されています。
-一方、Carrier Boardにはインターフェースの電気的特性を満たすために必要な Transceiver ICや プロトコルコンバータ ICなど、システム構成に影響を受ける機能を実装します。
+The OBC Module implements highly reusable functions, including DDR4 memory, Boot Storage and Main Storage, which remain unaffected even if the interface configuration of the system adopting it changes. Conversely, the Carrier Board implements functions influenced by the system configuration, such as the Transceiver IC and Protocol Converter IC required to meet the electrical specifications of the interfaces.
 
-SC-OBC Module V1を使うユーザーは、衛星のシステムが変更になっても Carrier Boardを再設計する事で、簡単に新しい衛星に適合したシステムを構築する事ができます。
-これにより、衛星のシステムが変わったとしても同じ OBC Moduleを採用するシステムには、多くのソフトウェア資産を流用する事ができます。
+Users employing the SC-OBC Module V1 can easily build systems compatible with new satellites by redesigning the Carrier Board, even if the satellite system changes. This allows significant reuse of software assets across systems adopting the same OBC Module, even when the satellite system changes.
 
-OBC Moduleと Carrier Boardは 400ピンの Board to Boardコネクタで接続します。
+The OBC Module and Carrier Board connect via a 400-pin board-to-board connector.
 
 image::block_diagram.svg[Block Diagram]

@@ -1,8 +1,8 @@
-=== JTAG 信号
+=== JTAG Signals
 
-SC-OBC Module V1 は、搭載されている 2 つの FPGA の書き込みおよびデバッグ用に JTAG 信号を提供します。400 ピンのボード間コネクタから、それぞれの FPGA に対応する JTAG 信号へ直接アクセスできます。
+The SC-OBC Module V1 provides JTAG signals for programming and debugging the two onboard FPGAs. Direct access to the JTAG signals for each FPGA is available via the 400-pin board-to-board connector.
 
-Versal および IGLOO2 の JTAG 信号がボード間コネクタの各ピンにどのように割り当てられているかを、以下の表に示します。詳細については SC-ESP-00086 を参照してください。
+The following table shows how the Versal and IGLOO2 JTAG signals are assigned to each pin on the board-to-board connector. For details, refer to SC-ESP-00086.
 
 [cols="1,1,1"]
 |===
