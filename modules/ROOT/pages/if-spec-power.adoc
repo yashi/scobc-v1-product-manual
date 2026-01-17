@@ -1,4 +1,4 @@
-=== Power Input/Output
+= Power Input/Output
 
 The SC-OBC Module V1 operates primarily on a single 5 V power supply
 provided by the carrier board. However, by supplying power to the IO
@@ -83,7 +83,7 @@ image::power-control-by-pwren-signals.svg[Power Control by PWREN Signals]
 
 |===
 
-==== Example LPD MIO Connection Circuit on the Carrier Board
+== Example LPD MIO Connection Circuit on the Carrier Board
 
 The following shows an example configuration on the carrier board side
 for connecting a device requiring a 1.8 V power supply to LPD MIO
@@ -100,7 +100,7 @@ power source to supply 1.8 V to devices on the carrier board. A power
 switch controlled by VCCO_502_PWREN controls the supply to
 VCCO_502_IN.
 
-==== Example PMC MIO Connection Circuit on the Carrier Board
+== Example PMC MIO Connection Circuit on the Carrier Board
 
 The following shows an example configuration on the carrier board for
 connecting a device requiring both 1.8 V and 3.3 V power supplies,
@@ -110,7 +110,7 @@ such as an eMMC, to PMC MIO Bank 500.
 image::carrier-board-design-example-pmcmio-bank500.svg[Carrier Board Design Example with PMC MIO Bank 500]
 
 
-==== Example PL HDIO Connection Circuit on Carrier Board
+== Example PL HDIO Connection Circuit on Carrier Board
 
 The following shows an example configuration on the carrier board side
 for connecting a device requiring a 3.3 V power supply to PL HDIO

@@ -1,4 +1,4 @@
-=== Versal GTY/GTYP 0/1
+= Versal GTY/GTYP 0/1
 
 
 Versal GTY/GTYP are high-speed PIPE transceivers integrated into

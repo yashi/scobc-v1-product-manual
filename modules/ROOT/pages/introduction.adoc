@@ -1,4 +1,4 @@
-== Introduction
+= Introduction
 
 The SC-OBC Module V1 is a high-performance On Board Computer designed
 for space missions such as Earth-orbiting satellites and lunar

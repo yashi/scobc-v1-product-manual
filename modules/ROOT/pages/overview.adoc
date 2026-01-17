@@ -1,6 +1,6 @@
-== Product Overview
+= Product Overview
 
-=== Specifications
+== Specifications
 
 .Main Processor
 [cols="1,1"]
@@ -164,7 +164,7 @@ Brownout Protection
 
 |===
 
-=== Block Diagram
+== Block Diagram
 
 The SC-OBC Module V1 configures the OBC using two boards (the OBC
 Module and the Carrier Board) to maintain high flexibility through the

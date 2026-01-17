@@ -1,4 +1,4 @@
-=== Versal PMC MIO 0/1, LPD MIO
+= Versal PMC MIO 0/1, LPD MIO
 
 On the SC-OBC Module V1, the PMC MIO 0/1 and LPD MIO located within
 the Versal device's PMC (Platform Management Controller) and LPD (Low

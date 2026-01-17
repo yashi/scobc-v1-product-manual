@@ -3,10 +3,10 @@
 
 = SC-OBC Module V1 Product Manual
 
-include::introduction.adoc[]
+include::introduction.adoc[leveloffset=+1]
 
-include::overview.adoc[]
+include::overview.adoc[leveloffset=+1]
 
-include::elec-spec.adoc[]
+include::elec-spec.adoc[leveloffset=+1]
 
-include::if-spec.adoc[]
+include::if-spec.adoc[leveloffset=+1]

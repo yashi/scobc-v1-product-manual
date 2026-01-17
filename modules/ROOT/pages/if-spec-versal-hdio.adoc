@@ -1,4 +1,4 @@
-=== Versal PL HDIO
+= Versal PL HDIO
 
 Versal PL HDIO signals are connected to the HDIO on the programmable
 logic side of the Versal device and are made accessible to the

@@ -1,19 +1,19 @@
-== Interface Specifications
+= Interface Specifications
 
-include::if-spec-con1.adoc[]
+include::if-spec-con1.adoc[leveloffset=+1]
 
-include::if-spec-jtag.adoc[]
+include::if-spec-jtag.adoc[leveloffset=+1]
 
-include::if-spec-boot-mode.adoc[]
+include::if-spec-boot-mode.adoc[leveloffset=+1]
 
-include::if-spec-versal-mio.adoc[]
+include::if-spec-versal-mio.adoc[leveloffset=+1]
 
-include::if-spec-versal-hdio.adoc[]
+include::if-spec-versal-hdio.adoc[leveloffset=+1]
 
-include::if-spec-versal-xpio.adoc[]
+include::if-spec-versal-xpio.adoc[leveloffset=+1]
 
-include::if-spec-versal-gty.adoc[]
+include::if-spec-versal-gty.adoc[leveloffset=+1]
 
-include::if-spec-igloo2-msio.adoc[]
+include::if-spec-igloo2-msio.adoc[leveloffset=+1]
 
-include::if-spec-power.adoc[]
+include::if-spec-power.adoc[leveloffset=+1]

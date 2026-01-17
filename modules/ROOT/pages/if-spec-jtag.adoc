@@ -1,4 +1,4 @@
-=== JTAG Signals
+= JTAG Signals
 
 The SC-OBC Module V1 provides JTAG signals for programming and
 debugging the two onboard FPGAs. Direct access to the JTAG signals for

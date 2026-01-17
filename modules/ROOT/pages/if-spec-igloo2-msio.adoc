@@ -1,4 +1,4 @@
-=== IGLOO2 MSIO 0/1
+= IGLOO2 MSIO 0/1
 
 IGLOO2 MSIO 0/1 are I/O signals connected to the MSIO of the IGLOO2
 device and are made accessible to the user. IGLOO2's MSIO

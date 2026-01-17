@@ -1,4 +1,4 @@
-=== Versal Boot Mode Signal
+= Versal Boot Mode Signal
 
 The Versal device on the SC-OBC Module V1 determines its boot method
 by reading the state of the Boot Mode pin after power-up.

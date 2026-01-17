@@ -1,4 +1,4 @@
-=== Versal PL XPIO
+= Versal PL XPIO
 
 Versal PL XPIO signals connect to the XPIO on the programmable logic
 side of the Versal device and are made accessible to the user. XPIO
