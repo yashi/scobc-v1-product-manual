@@ -1,10 +1,17 @@
 === Versal Boot Mode Signal
 
-The Versal device on the SC-OBC Module V1 determines its boot method by reading the state of the Boot Mode pin after power-up.
+The Versal device on the SC-OBC Module V1 determines its boot method
+by reading the state of the Boot Mode pin after power-up.
 
-In normal operation, the SC-OBC Module V1 is designed to store software in the onboard NOR flash memory and eMMC and boot from there. However, to facilitate initial development, software can also be stored on an SD card on the carrier board. This allows convenient use of the SD card in development scenarios requiring frequent software updates.
+In normal operation, the SC-OBC Module V1 is designed to store
+software in the onboard NOR flash memory and eMMC and boot from
+there. However, to facilitate initial development, software can also
+be stored on an SD card on the carrier board. This allows convenient
+use of the SD card in development scenarios requiring frequent
+software updates.
 
-All four bits of the Boot Mode signal are wired to the board-to-board connector, but not all combinations of these bits are supported.
+All four bits of the Boot Mode signal are wired to the board-to-board
+connector, but not all combinations of these bits are supported.
 
 [cols="1,1,1"]
 |===

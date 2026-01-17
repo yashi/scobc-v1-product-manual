@@ -166,12 +166,25 @@ Brownout Protection
 
 === Block Diagram
 
-The SC-OBC Module V1 configures the OBC using two boards (the OBC Module and the Carrier Board) to maintain high flexibility through the use of FPGAs.
+The SC-OBC Module V1 configures the OBC using two boards (the OBC
+Module and the Carrier Board) to maintain high flexibility through the
+use of FPGAs.
 
-The OBC Module implements highly reusable functions, including DDR4 memory, Boot Storage and Main Storage, which remain unaffected even if the interface configuration of the system adopting it changes. Conversely, the Carrier Board implements functions influenced by the system configuration, such as the Transceiver IC and Protocol Converter IC required to meet the electrical specifications of the interfaces.
+The OBC Module implements highly reusable functions, including DDR4
+memory, Boot Storage and Main Storage, which remain unaffected even if
+the interface configuration of the system adopting it
+changes. Conversely, the Carrier Board implements functions influenced
+by the system configuration, such as the Transceiver IC and Protocol
+Converter IC required to meet the electrical specifications of the
+interfaces.
 
-Users employing the SC-OBC Module V1 can easily build systems compatible with new satellites by redesigning the Carrier Board, even if the satellite system changes. This allows significant reuse of software assets across systems adopting the same OBC Module, even when the satellite system changes.
+Users employing the SC-OBC Module V1 can easily build systems
+compatible with new satellites by redesigning the Carrier Board, even
+if the satellite system changes. This allows significant reuse of
+software assets across systems adopting the same OBC Module, even when
+the satellite system changes.
 
-The OBC Module and Carrier Board connect via a 400-pin board-to-board connector.
+The OBC Module and Carrier Board connect via a 400-pin board-to-board
+connector.
 
 image::block_diagram.svg[Block Diagram]

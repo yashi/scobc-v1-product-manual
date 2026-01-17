@@ -1,12 +1,18 @@
 === CON1 (Carrier Board Interface)
 
-The SC-OBC Module V1 connects to the Carrier Board via a 400-pin Board-to-Board connector manufactured by Samtec. All input and output signals of the SC-OBC Module V1, including debug signals, are exchanged through this Board-to-Board connector.
+The SC-OBC Module V1 connects to the Carrier Board via a 400-pin
+Board-to-Board connector manufactured by Samtec. All input and output
+signals of the SC-OBC Module V1, including debug signals, are
+exchanged through this Board-to-Board connector.
 
 .Interface Signals
 image::interface-signal-structure.svg[Interface Signals]
 
 
-The connector implemented on the OBC module side is SEAF-40-05.0-S-10-1-A-K-TR. Therefore, the Carrier Board must be equipped with a mating SEAM-40-xxxx-S-10 series connector (where xxxx ranges from 02.0 to 11.0 depending on the required stack height).
+The connector implemented on the OBC module side is
+SEAF-40-05.0-S-10-1-A-K-TR. Therefore, the Carrier Board must be
+equipped with a mating SEAM-40-xxxx-S-10 series connector (where xxxx
+ranges from 02.0 to 11.0 depending on the required stack height).
 
 ==== CON1 Pin Layout
 

@@ -1,8 +1,12 @@
 === JTAG Signals
 
-The SC-OBC Module V1 provides JTAG signals for programming and debugging the two onboard FPGAs. Direct access to the JTAG signals for each FPGA is available via the 400-pin board-to-board connector.
+The SC-OBC Module V1 provides JTAG signals for programming and
+debugging the two onboard FPGAs. Direct access to the JTAG signals for
+each FPGA is available via the 400-pin board-to-board connector.
 
-The following table shows how the Versal and IGLOO2 JTAG signals are assigned to each pin on the board-to-board connector. For details, refer to SC-ESP-00086.
+The following table shows how the Versal and IGLOO2 JTAG signals are
+assigned to each pin on the board-to-board connector. For details,
+refer to SC-ESP-00086.
 
 [cols="1,1,1"]
 |===

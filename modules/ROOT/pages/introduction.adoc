@@ -1,11 +1,23 @@
 == Introduction
 
-The SC-OBC Module V1 is a high-performance On Board Computer designed for space missions such as Earth-orbiting satellites and lunar exploration missions (like lunar orbiters, landers and rovers).
+The SC-OBC Module V1 is a high-performance On Board Computer designed
+for space missions such as Earth-orbiting satellites and lunar
+exploration missions (like lunar orbiters, landers and rovers).
 
-The main processor employs the AMD Versal AI Edge Series VE2302. The AMD Versal is a high-performance device (Adaptive SoC) implementing a heterogeneous computing architecture combining Application and Real-time Processing Units, FPGAs, and AI engines. It efficiently performs preprocessing of large-scale sensor data inputs (e.g., optical sensors, SAR, LiDAR), hardware acceleration, vector operations, and storage of large-capacity data.
+The main processor employs the AMD Versal AI Edge Series VE2302. The
+AMD Versal is a high-performance device (Adaptive SoC) implementing a
+heterogeneous computing architecture combining Application and
+Real-time Processing Units, FPGAs, and AI engines. It efficiently
+performs preprocessing of large-scale sensor data inputs (e.g.,
+optical sensors, SAR, LiDAR), hardware acceleration, vector
+operations, and storage of large-capacity data.
 
-The SC-OBC Module V1 incorporates a Microchip IGLOO2 FPGA as a separate safety processor for system management, monitoring the operational status of the Versal.
+The SC-OBC Module V1 incorporates a Microchip IGLOO2 FPGA as a
+separate safety processor for system management, monitoring the
+operational status of the Versal.
 
-The hardware consists of radiation-hardened devices and industrial components with confirmed high radiation tolerances, ensuring high reliability even in space environments.
+The hardware consists of radiation-hardened devices and industrial
+components with confirmed high radiation tolerances, ensuring high
+reliability even in space environments.
 
 image::SC-OBC-Module-V1.webp[product image]

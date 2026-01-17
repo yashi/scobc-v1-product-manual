@@ -1,6 +1,10 @@
 === Versal GTY/GTYP 0/1
 
 
-Versal GTY/GTYP are high-speed PIPE transceivers integrated into Versal devices. These GTY/GTYP transceivers can be connected to a PCIe controller or a High-Speed Debug Port (HSDP).
+Versal GTY/GTYP are high-speed PIPE transceivers integrated into
+Versal devices. These GTY/GTYP transceivers can be connected to a PCIe
+controller or a High-Speed Debug Port (HSDP).
 
-The SC-OBC Module V1 provides users with two GTY/GTYP interfaces, each featuring two pairs of clock signals, four pairs of transmit (TX) signals, and four pairs of receive (RX) signals.
+The SC-OBC Module V1 provides users with two GTY/GTYP interfaces, each
+featuring two pairs of clock signals, four pairs of transmit (TX)
+signals, and four pairs of receive (RX) signals.
