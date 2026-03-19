@@ -40,6 +40,7 @@ assignable to each.
 .Versal PMC MIO 0 (Bank 500) Pin Assignments
 [cols=",,,,,,,,,,,,,,",options="header"]
 |===
+|MIO Pins	|12	|13	|14	|15	|16	|17	|18	|19	|20	|21	|22	|23	|24	|25
 |SD/eMMC0	|-	|D0	|D1	|D2	|D3	|PWR	|CLK	|SEL	|DIRC	|DIR0	|DIR1	|CMD	|CD	|WP
 |Tamper Trig	|TRIG	|TRIG	|-	|-	|-	|-	|-	|-	|-	|-	|TRIG	|TRIG	|-	|-
 |PMC I2C	|-	|-	|SCL	|SDA	|-	|-	|SCL	|SDA	|-	|-	|SCL	|SDA	|-	|-
