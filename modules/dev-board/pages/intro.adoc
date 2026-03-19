@@ -1,5 +1,7 @@
 = はじめに
 
-本マニュアルは、SC-OBC Module V1 を搭載できる SC-OBC Module V1 Development Board の各種インタフェースに関する詳細を記述しております。 +
-SC-OBC Module V1 Development Board は、SC-OBC Module V1 へ電源を入れ、機能を動作させ、評価を円滑に行うことを目的に設計されています。 +
+本マニュアルは、SC-OBC Module V1 を搭載できる SC-OBC Module V1 Development Board の各種インタフェースに関する詳細を記述しております。
+
+SC-OBC Module V1 Development Board は、SC-OBC Module V1 へ電源を入れ、機能を動作させ、評価を円滑に行うことを目的に設計されています。
+
 SC-OBC Module V1 Development Board の仕様については、『SC-ESP-00107: テスト用IFボード仕様』を参照してください。
