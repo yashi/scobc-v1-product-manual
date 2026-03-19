@@ -157,7 +157,7 @@ Brownout Protection
 |Operating Temperature
 |-40 to 80 °C
 
-|Dimentions
+|Dimensions
 |100 mm x 150 mm
 
 |===
