@@ -3,18 +3,18 @@
 [width="100%",cols="1,3",options="header",]
 |===
 |Term |Description
-|OBC |SC-OBC Module V1 を示す。
-|Dev Board |SC-OBC Module V1 Development Board を示す。
-|Versal |OBC の Main Processor である AMD 社製の Versal AI Edge Series VE2302 を示す。
-|Versal PMC MIO 0 |Versal PS の Bank 500 に属する Multiplexed I/O を示す。
-|Versal PMC MIO 1 |Versal PS の Bank 501 に属する Multiplexed I/O を示す。
-|Versal LPD MIO |Versal PS の Bank 502 に属する Multiplexed I/O を示す。
-|Versal HDIO |Versal PL の Bank 302 に属する低速の I/O を示す。
-|Versal XPIO |Versal PL の Bank 703 に属する高速の I/O を示す。
-|IGLOO2 |OBC の Safety Processor である Microchip 社製の IGLOO2 FPGA を示す。
-|IGLOO2 MSIO (Bank 5) |IGLOO2 の Bank 5 に属する低速または高速の Multi-Standard I/O を示す。
-|IGLOO2 MSIO (Bank 8) |IGLOO2 の Bank 8 に属する低速または高速の Multi-Standard I/O を示す。
-|主電源 |OBC の場合は Dev Board から供給される +5V を示す。 +
-Dev Board の場合は AC アダプターから供給される +12V を示す。
-|FTDI IC |FTDI 社製 の Quad High-Speed USB to Multi-Purpose UART/MPSSE IC である FT4232H-56Q を示す。
+|OBC |SC-OBC Module V1.
+|Dev Board |SC-OBC Module V1 Development Board.
+|Versal |AMD Versal AI Edge Series VE2302, the main processor of the OBC.
+|Versal PMC MIO 0 |Multiplexed I/O in Bank 500 of the Versal PS.
+|Versal PMC MIO 1 |Multiplexed I/O in Bank 501 of the Versal PS.
+|Versal LPD MIO |Multiplexed I/O in Bank 502 of the Versal PS.
+|Versal HDIO |Low-speed I/O in Bank 302 of the Versal PL.
+|Versal XPIO |High-speed I/O in Bank 703 of the Versal PL.
+|IGLOO2 |Microchip IGLOO2 FPGA, the safety processor of the OBC.
+|IGLOO2 MSIO (Bank 5) |Low-speed or high-speed multi-standard I/O in Bank 5 of the IGLOO2.
+|IGLOO2 MSIO (Bank 8) |Low-speed or high-speed multi-standard I/O in Bank 8 of the IGLOO2.
+|Main power supply |For the OBC, +5V supplied from the Dev Board. +
+For the Dev Board, +12V supplied from the AC adapter.
+|FTDI IC |FT4232H-56Q, a quad high-speed USB to multipurpose UART/MPSSE IC manufactured by FTDI.
 |===
