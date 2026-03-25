@@ -1,0 +1,7 @@
+= Interface Specification
+
+In this section, we describe the electrical specifications of each
+interface on the SC-OBC Module V1 Development Board. Refer to this
+section when connecting external devices, checking signal assignments,
+or confirming interface characteristics such as voltage levels, pin
+functions, and supported standards.

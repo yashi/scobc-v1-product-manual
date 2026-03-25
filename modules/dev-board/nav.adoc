@@ -1,8 +1,9 @@
 .Development Board
 * xref:overview.adoc[]
 * xref:terms.adoc[]
-* xref:interface-spec-con.adoc[]
-* xref:interface-spec-sw.adoc[]
-* xref:interface-spec-led.adoc[]
-* xref:interface-spec-jp.adoc[]
+* xref:interface-spec.adoc[]
+** xref:interface-spec-con.adoc[]
+** xref:interface-spec-sw.adoc[]
+** xref:interface-spec-led.adoc[]
+** xref:interface-spec-jp.adoc[]
 * xref:jumper-default.adoc[]
