@@ -1,4 +1,4 @@
-= Interface Spec: SW
+= Switches (SW)
 
 image::interface-layout-sw.webp[Interface_Layout1.svg]
 

@@ -1,4 +1,4 @@
-= Interface Spec: JP
+= Jumpers (JP)
 
 image::interface-layout-jp.webp[Interface_Layout2.svg]
 

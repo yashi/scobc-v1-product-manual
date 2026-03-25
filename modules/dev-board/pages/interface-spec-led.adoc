@@ -1,4 +1,4 @@
-= Interface Spec: LED
+= LEDs (LED)
 
 image::interface-layout-led.webp[Interface_Layout1.svg]
 

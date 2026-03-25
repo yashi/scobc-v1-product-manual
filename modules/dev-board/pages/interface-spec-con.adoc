@@ -1,4 +1,4 @@
-= Interface Spec: CON
+= Connectors (CON)
 
 image::interface-layout-con.webp[Interface_Layout1.svg]
 
