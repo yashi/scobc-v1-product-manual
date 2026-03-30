@@ -5,37 +5,50 @@ image::interface-layout-led.webp[Interface_Layout1.svg]
 [width="100%",cols="1,3,3,1",options="header",]
 |===
 |Part Number |Interface Name |Form Factor |Remarks
-|LED1 |Versal 起動状態インジケータ |LED (黄緑色) |
-|LED2 |Versal エラー状態インジケータ |LED (赤色) |
-|LED3 |1Gbps Ethernet リンク状態インジケータ |LED (黄緑色) |
-|LED4 |FMC モジュール電源供給インジケータ |LED (黄緑色) |
-|LED5 |Dev Board 主電源供給インジケータ |LED (黄緑色) |
-|LED6~LED9 |USER LED |LED (黄緑色) |
+|LED1 |Versal Boot Status Indicator |LED (Yellow-Green) |
+|LED2 |Versal Error Status Indicator |LED (Red) |
+|LED3 |1Gbps Ethernet Link Status Indicator |LED (Yellow-Green) |
+|LED4 |FMC Module Power Supply Indicator |LED (Yellow-Green) |
+|LED5 |Dev Board Main Power Supply Indicator |LED (Yellow-Green) |
+|LED6~LED9 |User LED |LED (Yellow-Green) |
 |===
 
-== Versal 起動状態インジケータ (LED1)
-LED1 は Versal の起動状態を示す黄緑色のインジケータです。 +
-POR (Power On Reset) により消灯し、PMC Start-up Flowchart に従って起動が正常に完了した場合に点灯します。
+== Versal Boot Status Indicator (LED1)
 
-== Versal エラー状態インジケータ (LED2)
-LED2 は Versal のエラーの発生状態を示す赤色のインジケータです。 +
-正常に動作している場合は消灯し、エラーが発生した場合に点灯します。
+LED1 is a yellow-green indicator that shows the Versal's boot status.
+It turns off upon POR (Power On Reset) and turns on when the boot
+process is successfully completed according to the PMC Start-up
+Flowchart.
 
-== 1Gbps Ethernet リンク状態インジケータ (LED3)
-LED3 は CON10 での通信状態を示すインジケータです。 +
-1Gbps での Ethernet 通信が確立した場合に点灯します。 +
-10Mbps, 100Mbps の場合は消灯します。
+== Versal Error Status Indicator (LED2)
 
-== FMC モジュール電源供給インジケータ (LED4)
-LED4 は FMC モジュールへの電源供給の状態を示す黄緑色のインジケータです。 +
-Dev Board から OBC へ電源が供給され、Versal の起動が完了し、FMC モジュールへの電源が正常に供給された場合、点灯します。
+LED2 is a red indicator that shows when a Versal error has occurred.
+It remains off during normal operation and turns on when an error
+occurs.
 
-== Dev Board 主電源供給インジケータ (LED5)
-LED5 は主電源の供給状態を示す黄緑色のインジケータです。 +
-CON16 または CON20 から主電源が正常に供給された場合に点灯します。 +
-SW4 のトグルが『OFF』シルク側へ移動された場合、消灯します。 +
-また主電源に約 5A 以上の電流が流れた場合も消灯します。
+== 1Gbps Ethernet Link Status Indicator (LED3)
 
-== USER LED (LED6~LED9)
-LED6~LED9 はユーザーが任意で使用が可能な黄緑色の LED です。 +
-詳細は CON17 を参照してください。
+LED3 is an indicator that shows the communication status of CON10.  It
+lights up when a 1Gbps Ethernet communication is established.  It
+remains off for 10Mbps and 100Mbps connections.
+
+== FMC Module Power Supply Indicator (LED4)
+
+LED4 is a yellow-green indicator that shows the power supply status to
+the FMC module.  It lights up when all of the following are met: power
+is supplied from the Dev Board to the OBC, the Versal has booted up
+and power is being supplied normally to the FMC module.
+
+
+== Dev Board Main Power Supply Indicator (LED5)
+
+LED5 is a yellow-green indicator that shows the status of the main
+power supply.  It lights up when main power is supplied normally from
+CON16 or CON20.  It turns off when the SW4 toggle is moved to the
+“OFF” side.  It also turns off if a current of approximately 5A or
+more flows through the main power supply.
+
+== User LED (LED6~LED9)
+
+LED6–LED9 are yellow-green LEDs that can be used as desired by the
+user.  For details, refer to CON17.
