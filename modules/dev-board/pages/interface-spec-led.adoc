@@ -15,34 +15,51 @@ image::interface-layout-led.webp[Interface_Layout1.svg]
 
 == Versal Boot Status Indicator (LED1)
 
-LED1 shows the Versal's boot status. It turns off upon POR (Power On
-Reset) and turns on when the boot process is successfully completed
-according to the PMC Start-up Flowchart.
+LED1 shows whether the Versal device has completed its booting
+process. It turns on when boot completes successfully.
+
+In Versal terms, LED1 indicates the status of the `DONE` signal. It
+turns on when `DONE` is asserted.
 
 == Versal Error Status Indicator (LED2)
 
-LED2 shows when a Versal error has occurred. It remains off during
-normal operation and turns on when an error occurs.
+LED2 shows whether an error has occurred in the Versal device. It turns
+on when the device enters an error state.
+
+In Versal terms, LED2 indicates the status of the `ERROR_OUT`
+signal. It turns on when `ERROR_OUT` is asserted.
 
 == 1Gbps Ethernet Link Status Indicator (LED3)
 
-LED3 shows the link status of CON10. It lights up when a 1Gbps
-Ethernet link is established. It remains off for 10Mbps and 100Mbps
-connections.
+LED3 shows whether a 1Gbps Ethernet link is established on CON10. It
+turns on when a 1Gbps Ethernet link is established. It remains off for
+10Mbps and 100Mbps connections.
+
+More specifically, LED3 indicates the status of the PHY `LED_1`
+signal. It turns on when the Ethernet PHY asserts `PHY_LED1`.
 
 == FMC Module Power Supply Indicator (LED4)
 
-LED4 shows the power supply status to the FMC module. It lights up
-when all of the following conditions are met: power is supplied from
-the Dev Board to the OBC, the Versal has completed booting, and power
-is being supplied normally to the FMC module.
+LED4 shows whether the FMC module reports that its required power
+rails are ready. It turns on when the FMC module is in a power-good
+state.
+
+In FMC terms, LED4 indicates the status of the `PG_C2M` signal from
+the FMC module on CON11. It turns on when `PG_C2M` is asserted and
+`VDD_3V3_FMC` is asserted.
 
 == Dev Board Main Power Supply Indicator (LED5)
 
-LED5 shows the status of the main power supply. It lights up when main
-power is supplied normally from CON16 or CON20. It turns off when the
-SW4 toggle is moved to the "OFF" side. It also turns off if a current
-of approximately 5A or more flows through the main power supply.
+LED5 shows whether the main power chain of the development board is
+complete. It turns on when main power is supplied normally from CON16
+or CON20.
+
+LED5 turns off when SW4 is moved to the OFF side.
+
+More specifically, LED5 is connected to the 12V0C power rail after the
+main power switch and the MP5016HGQH-Z overcurrent protection circuit.
+It therefore turns off when the power switch is off or when
+overcurrent protection is triggered.
 
 == User LED (LED6~LED9)
 
