@@ -1,0 +1,26 @@
+= Using This Manual With an AI Agent
+
+This manual is written to be used directly by AI coding agents (Claude Code, Codex, Cursor,
+GitHub Copilot, and similar tools), not only read by humans. Whether you are laying out a carrier board around
+the SC-OBC Module V1, developing FPGA logic for your payload, or writing RPU/APU software,
+you can clone the manual's source repository and point your agent at it instead of
+searching the rendered site by hand.
+
+[source, console]
+----
+git clone https://github.com/spacecubics/sc-docs-v1
+----
+
+The repository includes an `AGENTS.md` file that tells the agent how the manual is
+organized and where to look for hardware specs, interface tables, or software examples.
+You do not need to tell the agent which section is relevant. Just ask your question, for
+example:
+
+* "What is the maximum voltage on the dev board's CON2 power connector?"
+* "What clock sources are available to the Versal PL?"
+* "How does the RPU communicate with the safety processor?"
+
+and the agent will find the right page on its own.
+
+For a browsable version of the same content, see the published manual at
+https://docs.spacecubics.com/[docs.spacecubics.com].
