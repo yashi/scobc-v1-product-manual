@@ -4,7 +4,7 @@ The development of the Versal on the SC-OBC Module V1 can be carried out in two 
 using the Vivado GUI or using the command-line flow with RTL and Tcl scripts.
 
 The Makefile included in the development environment provides two main targets:
-`create_versal_ps_bd` and `build_fpga`.
+`create_versal_ps_bd` and `build_versal`.
 
 The following diagram illustrates the primary development flow for the SC-OBC-V1 FPGA.
 
@@ -24,7 +24,7 @@ cd versal/work/implement
 vivado project/sc_obc_v1_versal.xpr
 ----
 
-After completing the design in Vivado, close the application and run the `build_fpga` target.
+After completing the design in Vivado, close the application and run the `build_versal` target.
 This will export the `.pdi` and `.xsa` files generated from your design.
 
 [CAUTION]
