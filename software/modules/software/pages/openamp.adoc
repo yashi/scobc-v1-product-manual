@@ -1,0 +1,99 @@
+= Using OpenAMP
+
+OpenAMP enables optional communication between Zephyr on the RPU and Linux on
+the APU. This procedure builds the Zephyr OpenAMP sample, configures the APU
+Linux image, and includes the sample in `boot.bin` as the RPU firmware.
+
+== Build the Zephyr OpenAMP Sample
+
+The `openamp_rsc_table` sample is supported by the
+`scobc_v1/versal_rpu` board target. From the Zephyr workspace, build the
+sample with the following command:
+
+[source,bash]
+----
+$ west build -p always -b scobc_v1/versal_rpu zephyr/samples/subsys/ipc/openamp_rsc_table
+----
+
+The build generates the following RPU executable:
+
+[source,text]
+----
+build/zephyr/zephyr_openamp_rsc_table.elf
+----
+
+== Enable OpenAMP in meta-scobc
+
+Add `kas/conf/openamp.yml` to the `kas` build configuration to enable OpenAMP
+support in the APU Linux image:
+
+[source,bash]
+----
+$ kas build kas/scobc-v1.yml:kas/conf/openamp.yml
+----
+
+== Add the Sample to boot.bin
+
+Use the RPU firmware configuration described in
+xref:bootbin-rpu-firmware.adoc[] to include the generated ELF file in
+`boot.bin`.
+
+Set the firmware URI to the absolute path of the generated ELF file and set
+its SHA-256 checksum:
+
+[source,bash]
+----
+$ export RPU_FIRMWARE_URI="file:///absolute/path/to/build/zephyr/zephyr_openamp_rsc_table.elf"
+$ export RPU_FIRMWARE_SHA256="<SHA-256 checksum of zephyr_openamp_rsc_table.elf>"
+----
+
+Add both `kas/conf/openamp.yml` and `kas/conf/rpu-firmware.yml` to the build
+configuration:
+
+[source,bash]
+----
+$ kas build kas/scobc-v1.yml:kas/conf/openamp.yml:kas/conf/rpu-firmware.yml
+----
+
+The resulting `boot.bin` contains
+`zephyr_openamp_rsc_table.elf` as the RPU firmware. Boot the board from a boot
+device containing the generated image.
+
+== Connect to the Zephyr Shell from Linux
+
+After Linux boots on the APU, attach the Linux remote processor framework to
+the already-running RPU firmware:
+
+[source,console]
+----
+versal-scobc-v1-ve2302i-sdt-full:~# echo start > /sys/class/remoteproc/remoteproc0/state
+[  219.445131] remoteproc remoteproc0: attaching to ffe00000.r5f
+[  219.451366] rproc-virtio rproc-virtio.2.auto: assigned reserved memory node vdev0buffer@9868000
+[  219.460349] virtio_rpmsg_bus virtio0: rpmsg host is online
+[  219.461808] virtio_rpmsg_bus virtio0: creating channel rpmsg-tty addr 0x400
+[  219.465882] rproc-virtio rproc-virtio.2.auto: registered virtio0 (type 7)
+[  219.479592] remoteproc remoteproc0: remote processor ffe00000.r5f is now attached
+[  219.487477] virtio_rpmsg_bus virtio0: creating channel rpmsg-client-sample addr 0x401
+[  219.495438] virtio_rpmsg_bus virtio0: creating channel rpmsg-tty addr 0x402
+----
+
+Connect to the RPMsg TTY device with `microcom`:
+
+[source,console]
+----
+versal-scobc-v1-ve2302i-sdt-full:~# microcom /dev/ttyRPMSG0
+
+ipc:~$ kernel
+kernel - Kernel commands
+Subcommands:
+  cycles   : Kernel cycles.
+  reboot   : Reboot.
+  sleep    : ms
+  thread   : Kernel threads.
+  uptime   : Kernel uptime. Can be called with the -p or --pretty options
+  version  : Kernel version
+ipc:~$
+----
+
+The `ipc:~$` prompt indicates that the APU Linux system is connected to the
+Zephyr shell running on the RPU. Press `Ctrl+X` to exit `microcom`.

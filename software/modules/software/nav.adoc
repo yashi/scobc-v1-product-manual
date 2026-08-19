@@ -14,3 +14,4 @@
 * xref:rpu-apu-integration.adoc[]
 ** xref:rpu-apu-integration-overview.adoc[]
 ** xref:bootbin-rpu-firmware.adoc[]
+** xref:openamp.adoc[]
