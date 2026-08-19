@@ -1,0 +1,53 @@
+= Adding RPU Firmware to boot.bin
+
+You can include an RPU executable in `boot.bin` by adding
+`kas/conf/rpu-firmware.yml` to the `kas` build configuration.
+
+[source,bash]
+----
+$ kas build kas/scobc-v1.yml:kas/conf/rpu-firmware.yml
+----
+
+The generated `boot.bin` contains the Zephyr philosophers sample as the RPU
+firmware by default. The firmware is configured to run on the RPU in lockstep
+mode.
+
+== Running the RPU Firmware
+
+When the board is powered on from a boot device containing the generated
+`boot.bin`, the RPU starts automatically and executes the ELF file included in
+`boot.bin`.
+
+The default philosophers sample produces output similar to the following:
+
+[source,console]
+----
+$ tio /dev/ttyUSB2
+Philosopher 0 [C:-2]   EATING  [  375 ms ]
+Philosopher 1 [P: 2]  THINKING [  725 ms ]
+Philosopher 2 [P: 1]  THINKING [  700 ms ]
+Philosopher 3 [P: 0]    HOLDING ONE FORK
+Philosopher 4 [C:-1]   EATING  [  600 ms ]
+Philosopher 5 [C:-2]        STARVING
+
+Demo Description
+----------------
+An implementation of a solution to the Dining Philosophers
+problem (a classic multi-thread synchronization problem).
+This particular implementation demonstrates the usage of multiple
+preemptible and cooperative threads of differing priorities, as
+well as dynamic mutexes and thread sleeping.
+----
+
+== Using Custom RPU Firmware
+
+To include a different RPU executable, set `RPU_FIRMWARE_URI` to the URI of
+the executable and `RPU_FIRMWARE_SHA256` to its SHA-256 checksum before
+running the build.
+
+[source,bash]
+----
+$ export RPU_FIRMWARE_URI="file:///absolute/path/to/rpu-firmware.elf"
+$ export RPU_FIRMWARE_SHA256="<SHA-256 checksum of rpu-firmware.elf>"
+$ kas build kas/scobc-v1.yml:kas/conf/rpu-firmware.yml
+----
