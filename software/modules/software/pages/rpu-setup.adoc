@@ -83,16 +83,16 @@ features that have not yet been merged upstream.
 |TBA
 
 |SPI
-|WIP
-|WIP
+|✅️
+|✅️(`v2026.08` or later)
 
 |eMMC
-|WIP
+|✅️
 |✅️(`v2026.06` or later)
 
 |OpenAMP
-|TBA
-|TBA
+|✅️
+|✅️(`v2026.08` or later)
 |===
 
 After selecting the repository to use, initialize the Zephyr workspace with
