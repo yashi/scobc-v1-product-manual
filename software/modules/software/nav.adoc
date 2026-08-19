@@ -11,3 +11,5 @@
 ** xref:apu-dualboot.adoc[]
 ** xref:apu-custom-layers.adoc[]
 ** xref:apu-development.adoc[]
+* xref:rpu-apu-integration.adoc[]
+** xref:rpu-apu-integration-overview.adoc[]

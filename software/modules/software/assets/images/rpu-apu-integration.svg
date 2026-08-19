@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620"
+     viewBox="0 0 1000 620" role="img"
+     aria-labelledby="title description">
+  <title id="title">RPU architecture with optional APU communication</title>
+  <desc id="description">
+    The RPU runs Zephyr as the primary execution environment. When an application
+    also uses APU Linux with OpenAMP and RPMsg, Linux remoteproc uses the RPU
+    resource table, and Linux exchanges messages with Zephyr through reserved
+    shared memory.
+  </desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3"
+            orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="9"
+            refY="3" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #172033; }
+      .heading { font-size: 22px; font-weight: 700; }
+      .label { font-size: 17px; font-weight: 700; }
+      .body { font-size: 15px; }
+      .small { font-size: 13px; }
+      .flow-label { paint-order: stroke; stroke: #f8fafc; stroke-width: 6px;
+                    stroke-linejoin: round; }
+      .panel { stroke-width: 2; }
+      .subpanel { fill: #ffffff; stroke-width: 1.5; }
+      .flow { fill: none; stroke: #334155; stroke-width: 2.2;
+              marker-end: url(#arrow); }
+      .resource { fill: none; stroke: #7c3aed; stroke-width: 2.2;
+                  marker-start: url(#arrow); marker-end: url(#arrow); }
+      .message { fill: none; stroke: #2563eb; stroke-width: 3;
+                 marker-start: url(#arrow-blue); marker-end: url(#arrow-blue); }
+      .notify { fill: none; stroke: #7c3aed; stroke-width: 2;
+                stroke-dasharray: 7 5; marker-start: url(#arrow);
+                marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="20" y="18" width="960" height="584" rx="18"
+        fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <text x="500" y="51" text-anchor="middle" class="heading">
+    SC-OBC Module V1: RPU with Optional APU Communication
+  </text>
+
+  <rect x="250" y="68" width="500" height="102" rx="14" class="panel"
+        fill="#fff7d6" stroke="#c28b00"/>
+  <text x="500" y="94" text-anchor="middle" class="label">Boot media</text>
+  <text x="500" y="119" text-anchor="middle" class="small">
+    boot.bin: PLM + platform configuration + RPU Zephyr ELF + TF-A + U-Boot
+  </text>
+  <text x="500" y="143" text-anchor="middle" class="small">
+    APU Linux artifacts (optional): Image + device tree + root filesystem
+  </text>
+
+  <path d="M430 170 C360 188 270 180 230 215" class="flow"/>
+  <text x="290" y="183" text-anchor="middle" class="small flow-label">
+    PLM loads and starts RPU ELF
+  </text>
+  <path d="M570 170 C640 188 730 180 770 215" class="flow"/>
+  <text x="730" y="181" text-anchor="middle" class="small flow-label">
+    PLM starts TF-A and U-Boot
+  </text>
+  <text x="730" y="198" text-anchor="middle" class="small flow-label">
+    U-Boot loads Linux artifacts
+  </text>
+
+  <rect x="55" y="205" width="350" height="330" rx="14" class="panel"
+        fill="#fff0e5" stroke="#d65a1f"/>
+  <text x="230" y="238" text-anchor="middle" class="heading">RPU (primary)</text>
+  <text x="230" y="262" text-anchor="middle" class="body">
+    Dual Cortex-R5F (lockstep) · Zephyr
+  </text>
+
+  <rect x="85" y="286" width="290" height="82" rx="8" class="subpanel"
+        stroke="#d65a1f"/>
+  <text x="230" y="316" text-anchor="middle" class="label">
+    Resource table
+  </text>
+  <text x="230" y="341" text-anchor="middle" class="body">
+    Built into the Zephyr ELF
+  </text>
+
+  <rect x="85" y="393" width="290" height="105" rx="8" class="subpanel"
+        stroke="#d65a1f"/>
+  <text x="230" y="423" text-anchor="middle" class="label">
+    OpenAMP remote
+  </text>
+  <text x="230" y="448" text-anchor="middle" class="body">
+    RPMsg endpoints
+  </text>
+  <text x="230" y="474" text-anchor="middle" class="body">
+    Zephyr application
+  </text>
+
+  <rect x="595" y="205" width="350" height="330" rx="14" class="panel"
+        fill="#e8f2ff" stroke="#2563eb"/>
+  <text x="770" y="238" text-anchor="middle" class="heading">APU (optional)</text>
+  <text x="770" y="262" text-anchor="middle" class="body">
+    Dual Cortex-A72 · Linux
+  </text>
+
+  <rect x="625" y="286" width="290" height="82" rx="8" class="subpanel"
+        stroke="#2563eb"/>
+  <text x="770" y="316" text-anchor="middle" class="label">
+    Linux remoteproc
+  </text>
+  <text x="770" y="341" text-anchor="middle" class="body">
+    Attaches to the running RPU
+  </text>
+
+  <rect x="625" y="393" width="290" height="105" rx="8" class="subpanel"
+        stroke="#2563eb"/>
+  <text x="770" y="423" text-anchor="middle" class="label">
+    virtio RPMsg
+  </text>
+  <text x="770" y="448" text-anchor="middle" class="body">
+    RPMsg TTY and client drivers
+  </text>
+  <text x="770" y="474" text-anchor="middle" class="body">
+    /dev/ttyRPMSG0
+  </text>
+
+  <rect x="430" y="393" width="140" height="105" rx="10"
+        fill="#e8f8ed" stroke="#16803c" stroke-width="2"/>
+  <text x="500" y="421" text-anchor="middle" class="label">
+    Shared memory
+  </text>
+  <text x="500" y="447" text-anchor="middle" class="small">
+    virtio rings
+  </text>
+  <text x="500" y="468" text-anchor="middle" class="small">
+    message buffers
+  </text>
+
+  <path d="M375 327 C470 300 530 300 625 327" class="resource"/>
+  <text x="500" y="302" text-anchor="middle" class="small flow-label">
+    Resource requirements and assigned ring addresses
+  </text>
+
+  <path d="M375 445 L430 445" class="message"/>
+  <path d="M570 445 L625 445" class="message"/>
+  <text x="500" y="522" text-anchor="middle" class="small">
+    RPMsg data through shared buffers and virtio rings
+  </text>
+
+  <path d="M375 548 L625 548" class="notify"/>
+  <text x="500" y="574" text-anchor="middle" class="small">
+    Inter-processor notifications signal new messages
+  </text>
+</svg>

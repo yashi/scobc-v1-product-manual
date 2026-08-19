@@ -1,0 +1,11 @@
+= RPU and APU Integration
+
+Zephyr on the real-time processing unit (RPU) is the primary execution
+environment on the SC-OBC Module V1. Applications can additionally use Linux on
+the application processing unit (APU) when they require its capabilities. This
+section explains how to assign application functions to the RPU and APU and,
+when both are required, how to combine RPU with APU and use the two environments
+together.
+
+Read xref:rpu-apu-integration-overview.adoc[] before following the build and
+usage procedures.

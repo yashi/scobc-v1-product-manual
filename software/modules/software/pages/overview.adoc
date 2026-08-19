@@ -11,16 +11,23 @@ The first section covers setup and preparation. In addition to the
 SC-OBC Module V1, you will need a few items to use the OBC. You will
 also set up your development environment.
 
+The section on the AMD Versal real-time processors (dual Arm
+Cortex-R5F) focuses on Zephyr RTOS for flight-critical workloads that
+require deterministic behavior and predictable scheduling. It covers
+building and running Zephyr on the R5F cores in lockstep mode.
+
 The section on the AMD Versal application processors (dual Arm
 Cortex-A72) explains how to build U-Boot and Linux with the Yocto Project, and
 how to boot from an SD card. It outlines the standard Versal boot flow where PLM
 hands off to TF-A, then U-Boot loads Linux, and it notes that SD boot is a
 supported sequence.
 
-The section on the AMD Versal real-time processors (dual Arm
-Cortex-R5F) focuses on Zephyr RTOS for flight-critical workloads that
-require deterministic behavior and predictable scheduling. It covers
-building and running Zephyr on the R5F cores in lockstep mode.
+The xref:rpu-apu-integration-overview.adoc[RPU and APU Integration overview]
+explains the roles of Zephyr on the RPU and Linux on the APU, when an
+application should add the APU, and how the two environments can operate
+independently or exchange data when required. It introduces OpenAMP, the
+resource table, Linux remoteproc, RPMsg, and shared memory before presenting
+the build and usage procedures.
 
 == External Resources
 

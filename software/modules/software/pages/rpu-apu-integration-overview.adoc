@@ -1,0 +1,168 @@
+= Overview
+
+The AMD Versal adaptive SoC on the SC-OBC Module V1 contains different types of
+processors. Zephyr on the real-time processing unit (RPU) is the primary
+execution environment. The RPU runs regardless of whether an application uses
+Linux on the application processing unit (APU).
+
+Applications can add the APU when they need Linux capabilities. When both
+processors are used, each runs its own software image and operating system,
+forming an asymmetric multiprocessing (AMP) system. The two sides can run
+independently or communicate explicitly when the application requires
+coordination or data exchange.
+
+This page first explains the RPU and Zephyr baseline, then introduces the
+optional APU and Linux environment and the communication components used when
+the two sides exchange data.
+
+== When to Add the APU
+
+The RPU and APU are suited to different workloads:
+
+* The RPU is designed for predictable execution of real-time workloads. Zephyr
+  provides a small RTOS environment with deterministic scheduling. On the
+  SC-OBC Module V1, the dual Cortex-R5F RPU operates in lockstep mode by
+  default.
+* The APU provides the performance and memory-management features needed by
+  Linux. Linux supplies networking, storage, device drivers, process isolation,
+  and a rich application environment. However, its general-purpose scheduler
+  and dynamic services make worst-case response times harder to bound.
+
+The RPU and low-power peripherals reside in the low-power domain (LPD), while
+the APU resides in the full-power domain (FPD). The Safety Processor can
+control these power domains individually. This separation allows the RPU to
+continue real-time processing while the APU and FPD are powered down, reducing
+power consumption when Linux services are not required.
+
+An application can run on the RPU without using the APU when Zephyr provides all
+required functions. When Linux services are needed, the application can add the
+APU and assign feature-rich services to Linux while keeping timing-sensitive or
+safety-related functions on Zephyr. The RPU and APU do not have to exchange
+data; they can operate independently when their workloads do not require
+coordination. When data crosses the boundary, it uses a defined communication
+mechanism such as RPMsg because the operating systems do not share an address
+space or processes.
+
+image::rpu-apu-integration.svg[RPU architecture with optional APU communication]
+
+== Communication Components
+
+OpenAMP and RPMsg communication is optional. Applications that require
+coordination between Zephyr and Linux use the following components. Each
+description gives the general role first, followed by its use on the SC-OBC
+Module V1.
+
+* OpenAMP
+** *General:* An open-source framework that provides remoteproc and RPMsg
+   components for RTOS and bare-metal environments. These components
+   interoperate with the corresponding Linux kernel frameworks.
+** *SC-OBC Module V1:* Zephyr on the RPU uses the OpenAMP RPMsg and virtio
+   implementation as the remote side. Linux on the APU uses its native kernel
+   remoteproc and RPMsg frameworks as the host.
+* Resource table
+** *General:* A data structure included in remote firmware that declares
+   resources and features needed by the host, such as memory carveouts, trace
+   buffers, virtio devices, and vrings. Host remoteproc reads the table while
+   booting or attaching to the remote firmware.
+** *SC-OBC Module V1:* The Zephyr ELF resource table declares one RPMsg virtio
+   device and two vrings. During attach, Linux reads the table and assigns vring
+   addresses from the regions reserved by the devicetree.
+* `remoteproc`
+** *General:* A Linux kernel framework for managing the lifecycle of firmware on
+   remote processors and the resources needed to communicate with them.
+   Depending on the platform configuration, it can load, start, and stop
+   firmware, or attach to firmware started by another component.
+** *SC-OBC Module V1:* The RPU firmware is a Zephyr application image. PLM loads
+   and starts the image during boot. Linux remoteproc then attaches to the
+   running firmware and configures its virtio resources.
+* RPMsg
+** *General:* A virtio-based messaging bus that routes messages between
+   endpoints. Name service announcements provide named channels to which drivers
+   can bind.
+** *SC-OBC Module V1:* The Zephyr OpenAMP sample announces channels including
+   `rpmsg-tty`. The Linux RPMsg TTY driver binds to this channel and exposes it
+   to user space, for example as `/dev/ttyRPMSG0`.
+* Shared memory
+** *General:* Memory accessible by both processors. Virtio-based RPMsg uses
+   shared rings to track buffers and shared buffers to carry message payloads.
+   Inter-processor notifications signal that a ring has been updated.
+** *SC-OBC Module V1:* The Linux devicetree reserves separate DDR regions for
+   two virtio rings and the RPMsg buffer pool. The IPI3-to-IPI1 mailbox provides
+   the inter-processor notifications.
+
+== Communication Flow
+
+When OpenAMP and RPMsg communication is configured, data flows as follows:
+
+. PLM loads and starts the RPU Zephyr image during boot. The firmware provides
+  its resource table and waits for the Linux host to initialize virtio.
+. When the application uses APU Linux, Linux remoteproc attaches to the running
+  RPU firmware.
+. Linux uses the resource table supplied by the RPU firmware to register the
+  virtio device and configure its shared-memory rings.
+. Zephyr and Linux create the RPMsg endpoints declared by their respective
+  applications and drivers. The endpoints announce named RPMsg channels after
+  the virtio transport is ready.
+. The sender places a message in a shared-memory buffer, updates a virtio ring,
+  and sends an inter-processor notification.
+. The receiving processor removes the message from the ring and dispatches it
+  to the addressed RPMsg endpoint.
+. On Linux, an RPMsg driver can expose a channel to user space. The RPMsg TTY
+  driver, for example, creates `/dev/ttyRPMSG0`.
+
+== Advantages and Constraints
+
+=== Advantages
+
+* The RPU provides the primary real-time execution environment without depending
+  on Linux scheduling activity.
+* Applications can add APU Linux services without moving timing-sensitive
+  functions away from Zephyr.
+* The RPU can continue operating when APU Linux services are not required and
+  the FPD is powered down.
+* When cross-processor communication is needed, RPMsg provides structured
+  channels instead of requiring applications to invent their own shared-memory
+  protocol.
+
+=== Trade-offs and Constraints
+
+Adding APU Linux to the RPU and Zephyr baseline introduces a second software
+environment, build flow, log, and debugging context. A release that uses both
+must keep the RPU ELF file, boot artifacts, Linux image, and devicetree
+configuration mutually compatible.
+
+When an application also enables OpenAMP and RPMsg, the following additional
+constraints apply:
+
+* Shared-memory regions and virtio rings are reserved resources. Linux assigns
+  the ring addresses from the regions reserved by the devicetree and records
+  them in the resource table during attach. The reserved regions must be large
+  enough for the configured rings and buffers and must not overlap memory used
+  for another purpose.
+* RPMsg channels appear only after both sides are ready and remoteproc has
+  attached. Applications that use RPMsg must handle startup ordering and
+  channel loss.
+* RPMsg communication uses fixed shared-memory buffers and has
+  synchronization overhead. The available buffer space limits the number and
+  size of in-flight messages.
+* The RPU and APU can both access shared memory and peripherals. Define
+  resource ownership and synchronization explicitly to prevent conflicting
+  access. Expose only the RPMsg channels required by the application to Linux
+  user space.
+
+=== OpenAMP and RPMsg Configuration Dependencies
+
+The Linux drivers and Zephyr endpoints required for each RPMsg service depend
+on the application. The procedure in xref:openamp.adoc[] uses the Zephyr
+RPMsg shell endpoint and the Linux RPMsg TTY driver.
+
+An OpenAMP and RPMsg configuration has the following compatibility
+dependencies:
+
+* The resource table and OpenAMP configuration in the RPU firmware must be
+  compatible with Linux remoteproc and virtio RPMsg support.
+* The RPU firmware memory map and notification configuration must be compatible
+  with reserved-memory regions and inter-processor interrupt settings in the
+  Linux devicetree.
+* The RPU firmware, boot artifacts, Linux image, and devicetree must be built as
+  a compatible set.
