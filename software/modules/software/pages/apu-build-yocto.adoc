@@ -74,6 +74,21 @@ let it do the work with the following command.
 NOTE: From `meta-scobc` version `scobc-v1-v0.3.0`,
 SDT(System Device Tree)-based builds are the default.
 
+By default, the build uses `sc-image-ramroot`. A ramroot system loads the
+root filesystem into RAM as an initramfs and uses it as `/` instead of
+mounting the root filesystem partition on the SD card. Changes made to the
+root filesystem are therefore lost when the system is rebooted unless they
+are saved to separately mounted persistent storage.
+
+Ramroot is the default because the onboard eMMC is less tolerant of radiation
+than the memories intended for high-reliability use. Radiation-induced errors
+can corrupt data stored in the eMMC or make the device temporarily unavailable.
+Loading the root filesystem into RAM reduces Linux's dependency on the eMMC
+during operation and allows the system to keep running if access to the eMMC is
+disrupted. This does not protect the boot image or other persistent data kept on
+the eMMC, so mission-critical persistent data requires appropriate protection
+and redundancy.
+
 === For Space Grade
 
 [source,  bash]
@@ -87,11 +102,11 @@ the generated image files.
 [source,  bash]
 ----
 $ ls -1F build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/*.wic
-build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/sc-image-minimal-versal-scobc-v1-ve2302i-sdt-full-yyyyMMddHHmmss.wic
-build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/sc-image-minimal-versal-scobc-v1-ve2302i-sdt-full.wic@
+build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/sc-image-ramroot-versal-scobc-v1-ve2302i-sdt-full-yyyyMMddHHmmss.wic
+build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/sc-image-ramroot-versal-scobc-v1-ve2302i-sdt-full.wic@
 ----
 
-NOTE: `sc-image-minimal-versal-scobc-v1-ve2302i-sdt-full.wic` is a symlink to
+NOTE: `sc-image-ramroot-versal-scobc-v1-ve2302i-sdt-full.wic` is a symlink to
 the latest build.
 
 === For Developer Grade
@@ -107,9 +122,49 @@ the generated image files.
 [source,  bash]
 ----
 $ ls -1F build/tmp/deploy/images/versal-scobc-v1-ve2302e-sdt-full/*.wic
+build/tmp/deploy/images/versal-scobc-v1-ve2302e-sdt-full/sc-image-ramroot-versal-scobc-v1-ve2302e-sdt-full-yyyyMMddHHmmss.wic
+build/tmp/deploy/images/versal-scobc-v1-ve2302e-sdt-full/sc-image-ramroot-versal-scobc-v1-ve2302e-sdt-full.wic@
+----
+
+NOTE: `sc-image-ramroot-versal-scobc-v1-ve2302e-sdt-full.wic` is a symlink to
+the latest build.
+
+== Build an Image that uses the SD Card Root Filesystem
+
+To use the usual boot configuration, which mounts the root filesystem from
+the SD card, add `kas/targets/sc-image-minimal.yml` to the `kas` configuration.
+
+[source, bash]
+----
+$ kas build kas/scobc-v1.yml:kas/targets/sc-image-minimal.yml
+----
+
+For a Developer Grade build, use the same target with the Developer Grade
+configuration.
+
+[source, bash]
+----
+$ kas build kas/scobc-v1-devgrade.yml:kas/targets/sc-image-minimal.yml
+----
+
+The Space Grade image is generated in
+`build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/`.
+
+[source, bash]
+----
+$ ls -1F build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/sc-image-minimal-*.wic
+build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/sc-image-minimal-versal-scobc-v1-ve2302i-sdt-full-yyyyMMddHHmmss.wic
+build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/sc-image-minimal-versal-scobc-v1-ve2302i-sdt-full.wic@
+----
+
+The Developer Grade image is generated in
+`build/tmp/deploy/images/versal-scobc-v1-ve2302e-sdt-full/`.
+
+[source, bash]
+----
+$ ls -1F build/tmp/deploy/images/versal-scobc-v1-ve2302e-sdt-full/sc-image-minimal-*.wic
 build/tmp/deploy/images/versal-scobc-v1-ve2302e-sdt-full/sc-image-minimal-versal-scobc-v1-ve2302e-sdt-full-yyyyMMddHHmmss.wic
 build/tmp/deploy/images/versal-scobc-v1-ve2302e-sdt-full/sc-image-minimal-versal-scobc-v1-ve2302e-sdt-full.wic@
 ----
 
-NOTE: `sc-image-minimal-versal-scobc-v1-ve2302e-sdt-full.wic` is a symlink to
-the latest build.
+The `.wic` file without a timestamp is a symlink to the latest build.

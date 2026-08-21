@@ -1,17 +1,20 @@
 = Accessing Peripherals
 
-== Build the dev image
+== Build with the dev initramfs image
 
-To try out more peripherals, you can build the `sc-image-dev` image.
+To try out more peripherals, you can use `sc-initramfs-image-dev` as the
+initramfs image.
 
-In `kas`, you can override the target image by creating a file(ex: `override.local.yml`).
+In `kas`, you can override the initramfs image by creating a file
+(e.g.: `override.local.yml`).
 
 ----
 header:
   version: 19
 
-target:
-  - sc-image-dev
+local_conf_header:
+  initramfs-image-name: |
+    INITRAMFS_IMAGE = "sc-initramfs-image-dev"
 ----
 
 Then, build the image with the override file.
@@ -20,8 +23,8 @@ Then, build the image with the override file.
 $ kas build kas/scobc-v1.yml:override.local.yml
 ...
 $ ls -F1 build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/*.wic
-build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/sc-image-dev-versal-scobc-v1-ve2302i-sdt-full-yyyyMMddHHmmss.wic
-build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/sc-image-dev-versal-scobc-v1-ve2302i-sdt-full.wic@
+build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/sc-image-ramroot-versal-scobc-v1-ve2302i-sdt-full-yyyyMMddHHmmss.wic
+build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/sc-image-ramroot-versal-scobc-v1-ve2302i-sdt-full.wic@
 ----
 
 == Ethernet
@@ -46,7 +49,7 @@ If you have a USB memory, you can mount it like this:
 
 == GPIO
 
-In `sc-image-dev`, you can use the `gpiod` tools to control GPIOs.
+In `sc-initramfs-image-dev`, you can use the `gpiod` tools to control GPIOs.
 
 === Set GPIO(`PMC_MIO12`)
 

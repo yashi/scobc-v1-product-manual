@@ -3,7 +3,7 @@
 == Flashing the Image to an SD Card
 
 ----
-$ sudo dd if=build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/sc-image-minimal-versal-scobc-v1-ve2302i-sdt-full.wic \
+$ sudo dd if=build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/sc-image-ramroot-versal-scobc-v1-ve2302i-sdt-full.wic \
           of=/dev/sdX \
           bs=4M \
           status=progress \
@@ -15,77 +15,61 @@ $ sudo dd if=build/tmp/deploy/images/versal-scobc-v1-ve2302i-sdt-full/sc-image-m
 To boot the Linux from SD card, you have to set the boot MODE [3:0] pins to "SD0 v3.0" or "0011" by setting SW1 of V1 Carrier Board SC-MPN-0062A to "OFF OFF ON ON".
 
 ----
-[0.012]****************************************
+[0.011]****************************************
 [0.045]Xilinx Versal Platform Loader and Manager
-[0.080]Release 2025.1   Apr  5 2011  -  23:00:00
-[0.116]Platform Version: v2.0 PMC: v2.0, PS: v2.0
-[0.158]BOOTMODE: 0x3, MULTIBOOT: 0xF0000000
-[0.192]****************************************
-[0.399]Non Secure Boot
-[3.386]PLM Initialization Time
-[3.414]***********Boot PDI Load: Started***********
-[3.472]Loading PDI from SD0
-[3.499]Monolithic/Master Device
-[200.133]196.672 ms: PDI initialization time
-[200.175]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
-[200.224]---Loading Partition#: 0x1, Id: 0xC
-[254.583] 54.312 ms for Partition#: 0x1, Size: 9968 Bytes
-[259.574]---Loading Partition#: 0x2, Id: 0x0
-[283.581] 20.059 ms for Partition#: 0x2, Size: 62480 Bytes
-PSM Firmware version: 2025.1 [Build: Apr  5 2011 23:00:00 ]
-[291.232]+++Loading Image#: 0x2, Name: pl_cfi, Id: 0x18700000
-[296.603]---Loading Partition#: 0x3, Id: 0x3
-[422.376] 121.824 ms for Partition#: 0x3, Size: 347952 Bytes
-[424.864]---Loading Partition#: 0x4, Id: 0x5
-[853.890] 425.080 ms for Partition#: 0x4, Size: 440064 Bytes
-[856.390]+++Loading Image#: 0x3, Name: fpd, Id: 0x0420C003
-[861.518]---Loading Partition#: 0x5, Id: 0x8
-[867.101] 1.636 ms for Partition#: 0x5, Size: 4192 Bytes
-[870.714]+++Loading Image#: 0x4, Name: apu_ss, Id: 0x1C000000
-[875.828]---Loading Partition#: 0x6, Id: 0x0
-[891.265] 11.489 ms for Partition#: 0x6, Size: 29168 Bytes
-[893.582]---Loading Partition#: 0x7, Id: 0x0
-[909.853] 12.323 ms for Partition#: 0x7, Size: 49152 Bytes
-[912.170]---Loading Partition#: 0x8, Id: 0x0
-[924.692] 8.575 ms for Partition#: 0x8, Size: 18512 Bytes
-[926.923]---Loading Partition#: 0x9, Id: 0x0
-[1272.021] 341.151 ms for Partition#: 0x9, Size: 1197760 Bytes
-[1274.729]***********Boot PDI Load: Done***********
-[1279.227]327.418 ms: ROM Time
-[1281.960]Total PLM Boot Time
-INFO:    BL31: Early console setup
-INFO:    Successfully initialized runtime console
+[0.079]Release 2025.2   Feb 17 2026  -  11:51:17
+[0.115]Platform Version: v2.0 PMC: v2.0, PS: v2.0
+[0.154]BOOTMODE: 0x3, MULTIBOOT: 0xF0000000
+[0.187]****************************************
+[0.392]Non Secure Boot
+[3.307]PLM Initialization Time
+[3.331]***********Boot PDI Load: Started***********
+[3.385]Loading PDI from SD0
+[3.407]Monolithic/Master Device
+[200.511]197.142 ms: PDI initialization time
+[200.546]+++Loading Image#: 0x1, Name: lpd, Id: 0x04210002
+[200.590]---Loading Partition#: 0x1, Id: 0xC
+[257.455] 56.829 ms for Partition#: 0x1, Size: 10032 Bytes
+[262.531]---Loading Partition#: 0x2, Id: 0x0
+[278.822] 12.354 ms for Partition#: 0x2, Size: 48896 Bytes
+PSM Firmware version: 2025.2 [Build: Feb 17 2026 11:51:17 ]
+[286.465]+++Loading Image#: 0x2, Name: fpd, Id: 0x0420C003
+[291.581]---Loading Partition#: 0x3, Id: 0x8
+[297.431] 1.910 ms for Partition#: 0x3, Size: 4320 Bytes
+[300.493]+++Loading Image#: 0x3, Name: pl_cfi, Id: 0x18700000
+[305.884]---Loading Partition#: 0x4, Id: 0x3
+[327.998] 18.173 ms for Partition#: 0x4, Size: 47264 Bytes
+[330.307]---Loading Partition#: 0x5, Id: 0x5
+[744.547] 410.302 ms for Partition#: 0x5, Size: 393952 Bytes
+[747.303]+++Loading Image#: 0x4, Name: apu_ss, Id: 0x1C000000
+[752.426]---Loading Partition#: 0x6, Id: 0x0
+[777.083] 20.714 ms for Partition#: 0x6, Size: 73728 Bytes
+[779.394]---Loading Partition#: 0x7, Id: 0x0
+[797.538] 14.202 ms for Partition#: 0x7, Size: 40960 Bytes
+[799.849]---Loading Partition#: 0x8, Id: 0x0
+[806.954] 3.163 ms for Partition#: 0x8, Size: 14384 Bytes
+[809.179]---Loading Partition#: 0x9, Id: 0x0
+[1164.477] 351.355 ms for Partition#: 0x9, Size: 1245472 Bytes
+[1167.168]***********Boot PDI Load: Done***********
+[1171.668]314.380 ms: ROM Time
+[1174.409]Total PLM Boot Time
 NOTICE:  TF-A running on SILICON 0
-INFO:    BL31: GET_HANDOFF_PARAMS call success=0
-INFO:    BL31: PLM to TF-A handover success 0
 NOTICE:  BL31: Secure code at 0x0
 NOTICE:  BL31: Non secure code at 0x8000000
-NOTICE:  BL31: v2.12.0(debug):v1.1-15211-gdd3512287-dirty
-NOTICE:  BL31: Built : 07:04:54, Apr 24 2025
-INFO:    GICv3 with legacy support detected.
-INFO:    ARM GICv3 driver initialized in EL3
-INFO:    Maximum SPI INTID supported: 191
-INFO:    BL31: Initializing runtime services
-INFO:    BL31: cortex_a72: CPU workaround for erratum 859971 was applied
-INFO:    BL31: cortex_a72: CPU workaround for erratum 1319367 was applied
-INFO:    BL31: cortex_a72: CPU workaround for CVE 2017_5715 was applied
-INFO:    BL31: cortex_a72: CPU workaround for CVE 2018_3639 was applied
-INFO:    BL31: cortex_a72: CPU workaround for CVE 2022_23960 was applied
-INFO:    BL31: Preparing for EL3 exit to normal world
-INFO:    Entry point address = 0x8000000
-INFO:    SPSR = 0x3c9
+NOTICE:  BL31: v2.12.0(release):xlnx_rebase_v2.12_2025.2-dirty
+NOTICE:  BL31: Built : 08:14:53, Oct 16 2025
 
 
-U-Boot 2025.01-g95ca2579c337 (Jul 25 2025 - 11:30:19 +0000)
+U-Boot 2025.01-g5e0d8abc7e09-dirty (Nov 12 2025 - 07:44:59 +0000)
 
 CPU:   Versal
 Silicon: v2
 Chip:  v2
 Model: Xilinx Versal
 DRAM:  2 GiB (effective 4 GiB)
-EL Level:	EL2
-Multiboot:	0
-Core:  39 devices, 21 uclasses, devicetree: board
+EL Level:       EL2
+Multiboot:      0
+Core:  37 devices, 21 uclasses, devicetree: board
 MMC:   mmc@f1040000: 0, mmc@f1050000: 1
 Loading Environment from FAT... *** Error - No Valid Environment Area found
 *** Warning - bad env area, using default environment
@@ -97,38 +81,73 @@ Bootmode: SD_MODE
 Net:
 ZYNQ GEM: ff0d0000, mdio bus ff0d0000, phyaddr 1, interface rgmii-id
 
-Warning: ethernet@ff0d0000 (eth0) using random MAC address - 76:aa:39:97:fb:16
+Warning: ethernet@ff0d0000 (eth0) using random MAC address - 6e:3f:bd:80:11:83
 eth0: ethernet@ff0d0000
-Hit any key to stop autoboot:  5  4  3  2  1  0
+Hit any key to stop autoboot:  0
 switch to partitions #0, OK
 mmc0 is current device
 Scanning mmc 0:1...
 Found U-Boot script /boot.scr
-4777 bytes read in 16 ms (291 KiB/s)
+4777 bytes read in 17 ms (274.4 KiB/s)
 ## Executing script at 20000000
 Trying to load boot images from mmc0
 Checking for /image.ub
-Checking for /Image
-Loading Image at 0x00200000
-26661376 bytes read in 1833 ms (13.9 MiB/s)
-Checking for /system.dtb
-Loading system.dtb at 0x00001000
-29153 bytes read in 18 ms (1.5 MiB/s)
-Checking for /devicetree/openamp.dtbo
-Checking for /ramdisk.cpio.gz.u-boot
-Checking for /rootfs.cpio.gz.u-boot
-Working FDT set to 1000
-## Flattened Device Tree blob at 00001000
-   Booting using the fdt blob at 0x001000
-Working FDT set to 1000
-   Loading Device Tree to 0000000077e91000, end 0000000077e9b1e0 ... OK
-Working FDT set to 77e91000
+153036427 bytes read in 10474 ms (13.9 MiB/s)
+Kernel root filesystem parameter needs to be set for FITIMAGE boot if not defined in DTB
+## Loading kernel from FIT Image at 10000000 ...
+   Using 'conf-cortexa72-linux.dtb' configuration
+   Trying 'kernel-1' kernel subimage
+     Description:  Linux kernel
+     Type:         Kernel Image
+     Compression:  gzip compressed
+     Data Start:   0x10000104
+     Data Size:    12669216 Bytes = 12.1 MiB
+     Architecture: AArch64
+     OS:           Linux
+     Load Address: 0x00200000
+     Entry Point:  0x00200000
+     Hash algo:    sha256
+     Hash value:   37b09320237ec167b52eb9e49897f645ada4548ae047b072c51d6c5d79232bdd
+   Verifying Hash Integrity ... sha256+ OK
+## Loading ramdisk from FIT Image at 10000000 ...
+   Using 'conf-cortexa72-linux.dtb' configuration
+   Trying 'ramdisk-1' ramdisk subimage
+     Description:  sc-initramfs-image-minimal
+     Type:         RAMDisk Image
+     Compression:  uncompressed
+     Data Start:   0x10c2740c
+     Data Size:    140291280 Bytes = 133.8 MiB
+     Architecture: AArch64
+     OS:           Linux
+     Load Address: unavailable
+     Entry Point:  unavailable
+     Hash algo:    sha256
+     Hash value:   03e2000d81f8d37b7f382700646c33bb0a0bcfb84bc98937b92387dbe60516ea
+   Verifying Hash Integrity ... sha256+ OK
+## Loading fdt from FIT Image at 10000000 ...
+   Using 'conf-cortexa72-linux.dtb' configuration
+   Trying 'fdt-cortexa72-linux.dtb' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x10c15338
+     Data Size:    73725 Bytes = 72 KiB
+     Architecture: AArch64
+     Hash algo:    sha256
+     Hash value:   08bad9568850e753bc4b3e2e8168ad10fffdcfacfa81271bff679aa7ce30e7df
+   Verifying Hash Integrity ... sha256+ OK
+   Booting using the fdt blob at 0x10c15338
+Working FDT set to 10c15338
+   Uncompressing Kernel Image to 200000
+   Loading Ramdisk to 6f8c5000, end 77e8fcd0 ... OK
+   Loading Device Tree to 000000006f8b0000, end 000000006f8c4ffc ... OK
+Working FDT set to 6f8b0000
 No RNG device
 
 Starting kernel ...
 
 [    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd083]
-[    0.000000] Linux version 6.12.10-xilinx-g297834623cf6 (oe-user@oe-host) (aarch64-amd-linux-gcc (GCC) 13.3.0, GNU ld (GNU Binutils) 2.42.0.20240723) #1 SMP Mon Jul 21 10:14:27 UTC 2025
+[    0.000000] Linux version 6.12.40-xilinx-g9d861a44fe78 (oe-user@oe-host) (aarch64-amd-linux-gcc (GCC) 13.4.0, GNU ld (GNU Binutils) 2.42.0.20240723) #1 SMP Fri Nov  7 15:28:23 UTC 2025
 [    0.000000] KASLR disabled due to lack of seed
 [    0.000000] Machine model: Xilinx Versal
 
@@ -139,7 +158,7 @@ The PetaLinux source code and images provided/generated are for demonstration pu
 Please refer to https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/2741928025/Moving+from+PetaLinux+to+Production+Deployment
 for more details.
 ********************************************************************************************
-PetaLinux 2025.1+snapshot-90da27262fec73f66af71115afc7fa654e974815 versal-scobc-v1-ve2302i-sdt-full ttyAMA0
+PetaLinux 2025.2+snapshot-a59a0c815a0ffc2747ab4289284f2c3aee3bc7fd versal-scobc-v1-ve2302i-sdt-full ttyAMA0
 
 versal-scobc-v1-ve2302i-sdt-full login:
 ----
