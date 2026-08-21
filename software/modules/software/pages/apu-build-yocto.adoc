@@ -39,7 +39,7 @@ Then, install the required packages.
 ----
 $ sudo apt update
 $ sudo apt install binutils chrpath cpio diffstat file g++ gawk gcc \
-                   git git-lfs libncurses5 libtinfo5 lz4 make python3 \
+                   git libncurses5 libtinfo5 lz4 make python3 \
                    rpcsvc-proto zstd
 ----
 
@@ -57,9 +57,6 @@ $ curl -LsSf https://astral.sh/uv/install.sh | sh
 $ git clone https://github.com/spacecubics/meta-scobc
 $ cd meta-scobc
 ----
-
-NOTE: `meta-scobc` uses {git-lfs}[Git Large File Storage (Git
-LFS)]. Make sure you install it.
 
 == Install and Enable the Required Python Packages
 

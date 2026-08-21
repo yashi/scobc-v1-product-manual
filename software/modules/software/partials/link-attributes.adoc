@@ -1,4 +1,3 @@
-:git-lfs: https://git-lfs.com/
 :kas-github: https://github.com/siemens/kas
 :tio-github: https://github.com/tio/tio
 :yocto-org: https://www.yoctoproject.org/
