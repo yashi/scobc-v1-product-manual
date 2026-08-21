@@ -4,7 +4,10 @@ When building Linux with Yocto for Xilinx SoC platforms,
 a machine configuration is required to describe the hardware information.
 
 The hardware design is exported from Vivado as an XSA (Xilinx Support Archive).
-Xilinx provides tools to generate the required machine configuration from this XSA.
+Xilinx provides tools to generate the required machine configuration from the
+XSA or a generated SDT. SC-OBC XSA files and generated SDT archives are
+distributed from an artifact server instead of being stored in the
+`meta-scobc` layer.
 
 There are two flows to generate the machine configuration:
 
@@ -58,12 +61,17 @@ Example (SDT flow):
 $ uv run kas checkout kas/scobc-v1.yml
 ----
 
-Example (XSCT flow):
+[NOTE]
+====
+The XSCT kas configuration is not available in current releases. When using
+`meta-scobc` tag `scobc-v1-v0.3.0` or earlier, check out the XSCT sources as
+follows:
 
 [source,console]
 ----
 $ uv run kas checkout kas/scobc-v1-xsct.yml
 ----
+====
 
 === Initialize submodules
 
@@ -88,9 +96,10 @@ $ cd ..
 $ export PATH=$PATH:$(pwd)/sources/meta-xilinx/meta-xilinx-core/gen-machine-conf
 ----
 
-=== Enable sdtgen
+=== Enable sdtgen when generating an SDT locally
 
-`sdtgen` is required for the SDT flow.
+`sdtgen` is required when generating a new SDT from an XSA. It is not required
+when using an existing SDT archive through a machine YAML template.
 
 It is provided by Xilinx Vivado or Vitis.
 
@@ -105,9 +114,28 @@ $ source /opt/xilinx/2025.1/Vitis/settings64.sh
 In the SDT flow, the machine configuration is generated from an SDT
 (System Device Tree), which is created from the XSA exported by Vivado.
 
+For an existing SC-OBC machine, use the YAML template stored under
+`meta-scobc/conf/machineyaml/`. The template records the SDT archive URI,
+machine name, output configuration directory, and PL overlay mode.
+
+=== Generating machine configuration from a template
+
+Pass the template for the target machine to `gen-machine-conf parse-sdt`:
+
+[source,console]
+----
+$ gen-machine-conf parse-sdt \
+  --template meta-scobc/conf/machineyaml/<machine-name>.yaml
+----
+
+The SDT archive referenced by `--hw-description` in the template is fetched
+from the artifact server through BitBake. This is the normal way to regenerate
+an existing machine configuration.
+
 === Generating SDT from XSA
 
-Generate an SDT from the XSA exported from Vivado.
+When adding a new machine or updating its hardware design, obtain the XSA from
+the artifact server or export it from Vivado, and then generate an SDT locally.
 
 A generic TCL script for SDT generation is provided at:
 
@@ -136,12 +164,13 @@ $ sdtgen scripts/gen-sdt.tcl <path-to-xsa> <path-to-generating-sdt-path>
 === Generating machine configuration from SDT
 
 After generating the SDT, use `gen-machine-conf parse-sdt` to create the machine
-configuration from SDT.
+configuration. `--hw-description` accepts a local SDT directory or an SDT
+archive URI that BitBake can fetch and unpack.
 
 [source,console]
 ----
 $ gen-machine-conf parse-sdt \
-  --hw-description <path-to-generating-sdt-path> \
+  --hw-description <sdt-directory-or-archive-uri> \
   --machine-name <machine-name> \
   -c <conf-path> \
   -g <pl-overlay>
@@ -151,7 +180,7 @@ $ gen-machine-conf parse-sdt \
 | Option | Description
 
 | `--hw-description`
-| Path to the generated SDT directory
+| Path to the generated SDT directory or URI of an SDT archive
 
 | `--machine-name`
 | Name of the machine configuration
@@ -217,20 +246,23 @@ The `-g` option selects the PL overlay generation mode.
 | PL is loaded dynamically using DFX
 |===
 
-=== Example
+=== Machine YAML template
 
-[source,console]
-----
-$ sdtgen scripts/gen-sdt.tcl \
-  meta-scobc/recipes-bsp/hdf/files/versal-scobc-v1-ve2302i.xsa \
-  meta-scobc/recipes-bsp/sdt/files/versal-scobc-v1-ve2302i
+After validating a new or updated SDT, publish its archive to the artifact
+server and record the generation arguments in
+`meta-scobc/conf/machineyaml/<machine-name>.yaml`:
 
-$ gen-machine-conf parse-sdt \
-  --hw-description meta-scobc/recipes-bsp/sdt/files/versal-scobc-v1-ve2302i \
-  --machine-name versal-scobc-v1-ve2302i-sdt-full \
-  -c meta-scobc/conf \
-  -g full
+[source,yaml]
 ----
+args:
+  - --hw-description <sdt-archive-uri>
+  - --machine-name <machine-name>
+  - -c meta-scobc/conf
+  - -g <pl-overlay>
+----
+
+Keeping these arguments in the template makes regeneration independent of a
+developer's local XSA and SDT directory layout.
 
 [IMPORTANT]
 ====
@@ -268,7 +300,7 @@ directly from an XSA file.
 [source,console]
 ----
 $ gen-machine-conf parse-xsa \
-  --hw-description <path-to-xsa> \
+  --hw-description <xsa-path-or-uri> \
   --machine-name <machine-name> \
   -c <conf-path>
 ----
@@ -277,7 +309,7 @@ $ gen-machine-conf parse-xsa \
 | Option | Description
 
 | `--hw-description`
-| Path to the XSA file exported from Vivado
+| Path or fetchable URI of the XSA file exported from Vivado
 
 | `--machine-name`
 | Name of the machine configuration
@@ -302,8 +334,8 @@ The machine configuration naming convention is the same as for the SDT flow.
 [source,console]
 ----
 $ gen-machine-conf parse-xsa \
-  --hw-description meta-scobc/recipes-bsp/hdf/files/versal-scobc-v1-ve2302i.xsa \
-  --machine-name versal-scobc-v1-ve2302i-xsct-full \
+  --hw-description https://example.com/hardware/design.xsa \
+  --machine-name <machine-name> \
   -c meta-scobc/conf
 ----
 
